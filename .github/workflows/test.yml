@@ -14,6 +14,13 @@ jobs:
         with:
           root_file: test.tex
           working_directory: test/
+      - name: Compile basic LaTeX document with lualatex
+        uses: ./
+        with:
+          root_file: test.tex
+          working_directory: test/
+          compiler: lualatex
+          args: -file-line-error -interaction=nonstopmode
       - name: Compile LaTeX document with math symbols
         uses: ./
         with:
