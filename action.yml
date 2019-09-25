@@ -12,7 +12,7 @@ inputs:
     default: latexmk
   args:
     description: Extra arguments to be passed to the latex compiler
-    default: "-pdf -latexoption=\"-file-line-error -interaction=nonstopmode\""
+    default: "-pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode"
   extra_system_packages:
     description: Install extra packages by apt-get
 runs:
