@@ -20,4 +20,4 @@ if [ -n "$working_directory" ]; then
   cd "$working_directory"
 fi
 
-"$compiler" "$args" "$root_file"
+"$compiler" $args "$root_file"
