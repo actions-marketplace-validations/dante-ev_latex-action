@@ -47,7 +47,8 @@ jobs:
 
 ### How to use XeLaTeX or LuaLaTeX instead of pdfLaTeX?
 
-By default, this action uses pdfLaTeX. If you want to use XeLaTeX or LuaLaTeX, you can set the `args` to `-xelatex -latexoption=-file-line-error -latexoption=-interaction=nonstopmode` or `-lualatex -latexoption=-file-line-error -latexoption=-interaction=nonstopmode` respectively. Alternatively, you could create a `.latexmkrc` file. Refer to the [`latexmk` document](http://texdoc.net/texmf-dist/doc/support/latexmk/latexmk.pdf) for more information.
+By default, this action uses pdfLaTeX. If you want to use XeLaTeX or LuaLaTeX, you can set the `args` to `-xelatex -latexoption=-file-line-error -latexoption=-interaction=nonstopmode` or `-lualatex -latexoption=-file-line-error -latexoption=-interaction=nonstopmode` respectively. Alternatively, you could create a `.latexmkrc` file. Refer to the [`latexmk` document](https://mg.readthedocs.io/latexmk.html) for more information.
+Please mind that it is **not recommend** to change the `compiler` parameter, as the by default used `latexmk` has the advantage of determinating the (re)compilation steps automatically and executes them.
 
 ### How to enable `--shell-escape`?
 
