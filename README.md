@@ -61,6 +61,45 @@ The idea there is to initially provide all packages instead of using [texliveonf
 Using a full installation, this action also offers to use packages such as [pax](https://ctan.org/pkg/pax), which require other tooling such as perl.
 More reasoning is given in [ADR-0002](https://github.com/dante-ev/docker-texlive/blob/master/docs/adr/0002-provide-all-packages.md#provide-all-packages).
 
+### How can I speedup the build?
+
+You can try to use [caching](https://docs.github.com/en/actions/guides/caching-dependencies-to-speed-up-workflows), though be careful as sometimes a LaTeX document needs to be rebuilt completly in order to have a proper result.
+
+Here is an example that rebuilds uses the cache at most once a day. The files to cache [are taken from the well-known GitHub `.gitignore` templates](https://github.com/github/gitignore/blob/master/TeX.gitignore):
+```yaml
+      # https://github.com/actions/cache#creating-a-cache-key
+      # http://man7.org/linux/man-pages/man1/date.1.html
+      - name: Get Date
+        id: get-date
+        run: |
+          echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
+        shell: bash
+
+      - name: Cache
+        uses: actions/cache@v2.1.3
+        with:
+          # A list of files, directories, and wildcard patterns to cache and restore
+          path: |
+            *.aux
+            *.lof
+            *.lot
+            *.fls
+            *.out
+            *.toc
+            *.fmt
+            *.fot
+            *.cb
+            *.cb2
+            .*.lb
+            *.bbl
+            *.bcf
+            *.blg
+            *-blx.aux
+            *-blx.bib
+            *.run.xml
+          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}
+```
+
 ## License
 
 MIT
