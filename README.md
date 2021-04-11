@@ -16,7 +16,7 @@ This actions runs on docker using a [maximal TeXLive environment](https://hub.do
 
 * `compiler`
 
-    The LaTeX engine to be used. By default, [`latexmk`](https://ctan.org/pkg/latexmk) is used, which automates the process of generating LaTeX documents by issuing the appropriate sequence of commands to be run.
+    The LaTeX engine to be used. By default [`latexmk`](https://ctan.org/pkg/latexmk) is used. `latexmk` automates the process of generating LaTeX documents by issuing the appropriate sequence of commands to be run.
 
 * `args`
 
@@ -26,7 +26,12 @@ This actions runs on docker using a [maximal TeXLive environment](https://hub.do
 
     The extra packages to be installed by [`apt-get`](https://en.wikipedia.org/wiki/APT_(Package_Manager)) separated by space.
 
-## Example
+## Examples
+
+### Build `main.tex` using `latexmk`
+
+Note that by default [`latexmk`](https://ctan.org/pkg/latexmk) is used.
+`latexmk` automates the process of generating LaTeX documents by issuing the appropriate sequence of commands to be run.
 
 ```yaml
 name: Build LaTeX document
@@ -36,11 +41,65 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Compile LaTeX document
         uses: dante-ev/latex-action@master
         with:
           root_file: main.tex
+```
+
+### Build `example-class-relations--svg.tex` using `lualatex`
+
+This is required if one does not trust latexmk and wants to build "by hand"
+
+```yaml
+name: Build LaTeX document
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: example-class-relations--svg
+        uses: dante-ev/latex-action@master
+        with:
+          root_file: example-class-relations--svg.tex
+          compiler: lualatex
+          args: -interaction=nonstopmode -shell-escape
+```
+
+### "Real" document
+
+In a "real" document, one would have to encode all steps one after another:
+
+```yaml
+name: Build LaTeX document
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: pdflatex main
+        uses: dante-ev/latex-action@master
+        with:
+          root_file: main.tex
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+      - name: bibtex main
+        uses: dante-ev/latex-action@master
+        with:
+          root_file: main.tex
+          compiler: bibtex
+          args: 
+      - name: pdflatex main
+        uses: dante-ev/latex-action@master
+        with:
+          root_file: main.tex
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
 ```
 
 ## FAQs
