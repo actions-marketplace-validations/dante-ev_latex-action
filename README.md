@@ -125,6 +125,7 @@ More reasoning is given in [ADR-0002](https://github.com/dante-ev/docker-texlive
 You can try to use [caching](https://docs.github.com/en/actions/guides/caching-dependencies-to-speed-up-workflows), though be careful as sometimes a LaTeX document needs to be rebuilt completly in order to have a proper result.
 
 Here is an example that rebuilds uses the cache at most once a day. The files to cache [are taken from the well-known GitHub `.gitignore` templates](https://github.com/github/gitignore/blob/master/TeX.gitignore):
+
 ```yaml
       # https://github.com/actions/cache#creating-a-cache-key
       # http://man7.org/linux/man-pages/man1/date.1.html
