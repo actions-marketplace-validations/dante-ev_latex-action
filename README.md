@@ -102,6 +102,27 @@ jobs:
           args: -interaction=nonstopmode -shell-escape
 ```
 
+### Custom build script
+
+When using a custom shell script for building, one can pass this as follows:
+
+```yaml
+name: Build LaTeX document
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: release.sh
+        uses: dante-ev/latex-action@latest
+        with:
+          entrypoint: ./release.sh
+```
+
+Real life example: <https://github.com/koppor/plantuml/blob/main/.github/workflows/build-and-publish.yml>
+
 ## FAQs
 
 ### How to use XeLaTeX or LuaLaTeX instead of pdfLaTeX?
