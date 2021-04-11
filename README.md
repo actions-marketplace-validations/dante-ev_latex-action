@@ -43,7 +43,7 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: Compile LaTeX document
-        uses: dante-ev/latex-action@master
+        uses: dante-ev/latex-action@latest
         with:
           root_file: main.tex
 ```
@@ -62,7 +62,7 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: example-class-relations--svg
-        uses: dante-ev/latex-action@master
+        uses: dante-ev/latex-action@latest
         with:
           root_file: example-class-relations--svg.tex
           compiler: lualatex
@@ -83,19 +83,19 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: pdflatex main
-        uses: dante-ev/latex-action@master
+        uses: dante-ev/latex-action@latest
         with:
           root_file: main.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
       - name: bibtex main
-        uses: dante-ev/latex-action@master
+        uses: dante-ev/latex-action@latest
         with:
           root_file: main.tex
           compiler: bibtex
           args: 
       - name: pdflatex main
-        uses: dante-ev/latex-action@master
+        uses: dante-ev/latex-action@latest
         with:
           root_file: main.tex
           compiler: pdflatex
@@ -159,6 +159,11 @@ Here is an example that rebuilds uses the cache at most once a day. The files to
             *.run.xml
           key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}
 ```
+
+## Available versions
+
+* `@latest` points to the latest release of [DANTE e.V.'s docker-texlive](https://github.com/dante-ev/docker-texlive)
+* `@edge` is the latest development version of [DANTE e.V.'s docker-texlive](https://github.com/dante-ev/docker-texlive)
 
 ## License
 
