@@ -91,7 +91,7 @@ jobs:
       - name: bibtex main
         uses: dante-ev/latex-action@latest
         with:
-          root_file: main.tex
+          root_file: main.aux
           compiler: bibtex
           args: 
       - name: pdflatex main
