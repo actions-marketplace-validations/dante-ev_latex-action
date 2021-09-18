@@ -10,6 +10,14 @@ Instead, we version `YYYY-R`, where `YYYY` is TeXLive version this image is base
 E.g., `2021-A`, `2021-B`, ...
 We use letters instead of numbers to avoid confusion with the automatic builds such as `2021-05-15`.
 
+## [2020-A] - 2021-09-18
+
+- Base on [DANTE e.V.'s docker-texlive 2020-A](https://github.com/dante-ev/docker-texlive/releases/tag/2020-A)
+
+## [2019-A] - 2021-09-15
+
+- Base on [DANTE e.V.'s docker-texlive 2019-A](https://github.com/dante-ev/docker-texlive/releases/tag/2019-A)
+
 ## [2021-C] - 2021-08-04
 
 - Base on [DANTE e.V.'s docker-texlive 2021-C](https://github.com/dante-ev/docker-texlive/releases/tag/2021-C)
@@ -39,5 +47,7 @@ Initial public release
 [2021-C]: https://github.com/dante-ev/latex-action/compare/2021-B...2021-C
 [2021-B]: https://github.com/dante-ev/latex-action/compare/2021-A...2021-B
 [2021-A]: https://github.com/dante-ev/latex-action/compare/v0.2.0...2021-A
+[2020-A]: https://github.com/dante-ev/latex-action/compare/2019-A...2020-A
+[2019-A]: https://github.com/dante-ev/latex-action/compare/2021-C...2019-A
 [0.2.0]: https://github.com/dante-ev/latex-action/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/dante-ev/latex-action/releases/tag/v0.1.0
